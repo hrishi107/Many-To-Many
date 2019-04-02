@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+          
+<hibernate-mapping>
+  <class name="com.demo.dao.Student" table="student">  
+    <id name="sid" column="sid">  
+    	<generator class="native"></generator>  
+    </id>  
+    <property name="sname" column="sname"></property>  
+   
+   <!-- <many-to-one name="scc" class="com.demo.dao.StudentCourse" column="scid"></many-to-one> -->
+   
+    <set name="courseSet" cascade="all" table="student_course">
+		<key column="fksid "/>
+		<many-to-many class="com.demo.dao.Course" column="fkcid" />
+	</set>
+	
+	</class>  
+            
+ </hibernate-mapping>  
